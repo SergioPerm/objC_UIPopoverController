@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UIPopoverPresentationControllerDelegate>
+@interface ViewController : UITableViewController <UIPopoverPresentationControllerDelegate, UITextFieldDelegate>
 
 - (IBAction)actionAdd:(UIBarButtonItem *)sender;
-- (IBAction)actionPressMe:(UIButton *)sender;
+
+@property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *textFieldCollection;
 
 
 @end
