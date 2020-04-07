@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7M-iP-cyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="-665"/>
+            <point key="canvasLocation" x="-454" y="-713"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vqh-2s-asq">
@@ -261,7 +261,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-sS-8CG">
-                                <rect key="frame" x="0.0" y="168" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="190" width="320" height="216"/>
+                                <connections>
+                                    <action selector="datePickerChangeAction:" destination="bn5-Hs-mJJ" eventType="valueChanged" id="Kd0-zn-eJ6"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -271,10 +274,36 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tub-QA-jvx"/>
                     </view>
+                    <navigationItem key="navigationItem" id="mJT-xo-kH0">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="pV8-5J-Azo">
+                            <connections>
+                                <action selector="barItemDoneAction:" destination="bn5-Hs-mJJ" id="2ag-rc-Acg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="birthDatePicker" destination="JlA-sS-8CG" id="K1X-sT-ZPC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1w-su-1Fr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1384" y="-665"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mHr-xS-0sd">
+            <objects>
+                <navigationController id="wm6-ac-S0S" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KxK-Cm-6Rx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bn5-Hs-mJJ" kind="relationship" relationship="rootViewController" id="0Hw-SW-Kzh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ARx-wu-igr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="-665"/>
         </scene>
     </scenes>
 </document>

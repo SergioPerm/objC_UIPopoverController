@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "DetailsViewController.h"
-#import "BirthDayViewController.h"
 
 @interface ViewController ()
 
@@ -93,25 +92,56 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
+    self.activeField = textField;
+    
     if (textField.tag == 4) {
         
         BirthDayViewController* birthView = [self.storyboard instantiateViewControllerWithIdentifier:@"birthDayViewController"];
-
-        birthView.preferredContentSize = CGSizeMake(300, 300);
-        birthView.modalPresentationStyle = UIModalPresentationPopover;
+        birthView.delegate = self;
+                
+        if (![textField.text isEqualToString:@""]) {
+            
+            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+            
+            birthView.birthDayDate = [dateFormatter dateFromString:textField.text];
+            
+        }
         
-        UIPopoverPresentationController* presentCtrl = birthView.popoverPresentationController;
+        UINavigationController* navCtrl = [[UINavigationController alloc] initWithRootViewController:birthView];
+        
+        navCtrl.preferredContentSize = CGSizeMake(100, 100);
+        navCtrl.modalPresentationStyle = UIModalPresentationPopover;
+        
+        UIPopoverPresentationController* presentCtrl = navCtrl.popoverPresentationController;
         presentCtrl.permittedArrowDirections = UIPopoverArrowDirectionAny;
         presentCtrl.delegate = self;
         presentCtrl.sourceRect = textField.frame;
         presentCtrl.sourceView = self.view;
             
-        [self presentViewController:birthView animated:YES completion:nil];
+        [self presentViewController:navCtrl animated:YES completion:nil];
         
         return NO;
     }
     
     return YES;
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    self.activeField = nil;
+    
+}
+
+#pragma mark - BirthDayViewDelegate
+
+- (void)closeBirthDayDatePickerWithDate:(NSDate *)birdtDay {
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+        
+    self.activeField.text = [dateFormatter stringFromDate:birdtDay];
     
 }
 

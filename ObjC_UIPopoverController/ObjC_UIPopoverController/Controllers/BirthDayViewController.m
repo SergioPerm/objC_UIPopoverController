@@ -10,25 +10,48 @@
 
 @interface BirthDayViewController ()
 
+
+
 @end
 
 @implementation BirthDayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.preferredContentSize = CGSizeMake(400, 150);
+
+    if (self.birthDayDate) {
+        self.birthDatePicker.date = self.birthDayDate;
+    } else {
+        self.birthDayDate = self.birthDatePicker.date;
+    }
     
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Actions
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)datePickerChangeAction:(UIDatePicker *)sender {
+    
+    self.birthDayDate = sender.date;
+    
 }
-*/
+
+- (IBAction)barItemDoneAction:(UIBarButtonItem *)sender {
+        
+    if ([self.delegate respondsToSelector:@selector(closeBirthDayDatePickerWithDate:)]) {
+        [self.delegate closeBirthDayDatePickerWithDate:self.birthDayDate];
+    }
+        
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark - Delegate methods
+
+- (void) closeBirthDayDatePickerWithDate:(NSDate*) birdtDay {
+ 
+    
+    
+}
 
 @end
+
