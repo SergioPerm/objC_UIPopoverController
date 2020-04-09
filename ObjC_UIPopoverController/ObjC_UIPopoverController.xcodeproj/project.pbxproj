@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10AF714243F7146002E51D0 /* EducationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AF713243F7146002E51D0 /* EducationViewController.m */; };
 		B1AF62832435FD1D003031B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF62822435FD1D003031B3 /* AppDelegate.m */; };
 		B1AF62862435FD1D003031B3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF62852435FD1D003031B3 /* SceneDelegate.m */; };
 		B1AF62892435FD1D003031B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF62882435FD1D003031B3 /* ViewController.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B10AF712243F7146002E51D0 /* EducationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EducationViewController.h; sourceTree = "<group>"; };
+		B10AF713243F7146002E51D0 /* EducationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EducationViewController.m; sourceTree = "<group>"; };
 		B1AF627E2435FD1D003031B3 /* ObjC_UIPopoverController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjC_UIPopoverController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1AF62812435FD1D003031B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B1AF62822435FD1D003031B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				B1AF62B72435FF50003031B3 /* DetailsViewController.m */,
 				B1C55072243BA26C005DEE75 /* BirthDayViewController.h */,
 				B1C55073243BA26C005DEE75 /* BirthDayViewController.m */,
+				B10AF712243F7146002E51D0 /* EducationViewController.h */,
+				B10AF713243F7146002E51D0 /* EducationViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				B1AF62B82435FF50003031B3 /* DetailsViewController.m in Sources */,
 				B1AF62832435FD1D003031B3 /* AppDelegate.m in Sources */,
 				B1AF62942435FD1F003031B3 /* main.m in Sources */,
+				B10AF714243F7146002E51D0 /* EducationViewController.m in Sources */,
 				B1AF62862435FD1D003031B3 /* SceneDelegate.m in Sources */,
 				B1C55074243BA26C005DEE75 /* BirthDayViewController.m in Sources */,
 			);

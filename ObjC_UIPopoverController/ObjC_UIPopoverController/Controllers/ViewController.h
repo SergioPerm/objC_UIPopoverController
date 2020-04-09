@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BirthDayViewController.h"
+#import "EducationViewController.h"
 
-@interface ViewController : UITableViewController <UIPopoverPresentationControllerDelegate, UITextFieldDelegate, BirthDayViewDelegate>
+@interface ViewController : UITableViewController <UIPopoverPresentationControllerDelegate, UITextFieldDelegate, BirthDayViewDelegate, EducationViewDelegate>
 
 - (IBAction)actionAdd:(UIBarButtonItem *)sender;
 

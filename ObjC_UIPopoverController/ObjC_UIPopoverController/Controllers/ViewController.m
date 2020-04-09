@@ -73,6 +73,13 @@
 
 - (void) setFirstRespronderForNextTextField:(UITextField*) textField {
     
+    if (textField.tag == 2) {
+        
+        [textField resignFirstResponder];
+        return;
+        
+    }
+    
     NSUInteger textFieldIndex = [self.textFieldCollection indexOfObject:textField];
 
     self.activeField = [self.textFieldCollection objectAtIndex:textFieldIndex + 1];
@@ -110,18 +117,41 @@
         
         UINavigationController* navCtrl = [[UINavigationController alloc] initWithRootViewController:birthView];
         
-        navCtrl.preferredContentSize = CGSizeMake(100, 100);
+        navCtrl.preferredContentSize = CGSizeMake(300, 180);
         navCtrl.modalPresentationStyle = UIModalPresentationPopover;
         
         UIPopoverPresentationController* presentCtrl = navCtrl.popoverPresentationController;
-        presentCtrl.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        presentCtrl.permittedArrowDirections = UIPopoverArrowDirectionUp;
         presentCtrl.delegate = self;
-        presentCtrl.sourceRect = textField.frame;
+        presentCtrl.sourceRect = [textField convertRect:textField.bounds toView:self.view];
         presentCtrl.sourceView = self.view;
             
         [self presentViewController:navCtrl animated:YES completion:nil];
         
         return NO;
+    
+    } else if (textField.tag == 5) {
+        
+        EducationViewController* educationView = [self.storyboard instantiateViewControllerWithIdentifier:@"educationViewController"];
+        educationView.delegate = self;
+        
+        UINavigationController* navCtrl = [[UINavigationController alloc] initWithRootViewController:educationView];
+        
+        navCtrl.preferredContentSize = CGSizeMake(300, 220);
+        navCtrl.modalPresentationStyle = UIModalPresentationPopover;
+        
+        UIPopoverPresentationController* presentCtrl = navCtrl.popoverPresentationController;
+        presentCtrl.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        presentCtrl.delegate = self;
+        presentCtrl.sourceRect = [textField convertRect:textField.bounds toView:self.view];
+        presentCtrl.sourceView = self.view;
+            
+        [self presentViewController:navCtrl animated:YES completion:nil];
+
+        [textField resignFirstResponder];
+        
+        return NO;
+        
     }
     
     return YES;
@@ -142,6 +172,14 @@
     [dateFormatter setDateFormat:@"dd.MM.yyyy"];
         
     self.activeField.text = [dateFormatter stringFromDate:birdtDay];
+        
+}
+
+#pragma mark - EducationViewDelegate
+
+- (void) onSelectEducationDegree:(NSString*) educationDegree {
+ 
+    self.activeField.text = educationDegree;
     
 }
 
